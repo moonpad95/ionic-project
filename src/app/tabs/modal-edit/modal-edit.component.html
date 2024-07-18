@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="medium" (click)="cancel()">Cancelar</ion-button>
+    </ion-buttons>
+    <ion-title>
+      Editar producto
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="confirm()" [strong]="true">Editar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Datos generales del producto</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="stacked">Nombre</ion-label>
+        <ion-input [(ngModel)]="product.name" placeholder="Nombre del producto"></ion-input>
+      </ion-item>
+      <ion-text color="danger" *ngIf="!product.name">Nombre es requerido</ion-text>
+
+      <ion-item>
+        <ion-label position="stacked">Descripción del producto</ion-label>
+        <ion-input [(ngModel)]="product.description" placeholder="Descripción del producto"></ion-input>
+      </ion-item>
+      <ion-text color="danger" *ngIf="!product.description">Es necesario agregar descripción</ion-text>
+
+      <ion-item>
+        <ion-label position="stacked">Precio</ion-label>
+        <ion-input [(ngModel)]="product.price" type="number" placeholder="Precio"></ion-input>
+      </ion-item>
+      <ion-text color="danger" *ngIf="product.price <= 0">Precio debe ser un número positivo</ion-text>
+
+      <ion-item>
+        <ion-label position="stacked">Cantidad</ion-label>
+        <ion-input [(ngModel)]="product.amount" type="number" placeholder="Cantidad"></ion-input>
+      </ion-item>
+      <ion-text color="danger" *ngIf="product.amount < 1">Cantidad debe ser al menos 1</ion-text>
+
+      <ion-item>
+        <ion-label position="stacked">Estatus</ion-label>
+        <ion-select [(ngModel)]="product.status" placeholder="Seleccione un estatus">
+          <ion-select-option [value]="true">Disponible</ion-select-option>
+          <ion-select-option [value]="false">No Disponible</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-text color="danger" *ngIf="product.status === undefined">Estatus es requerido</ion-text>
+
+      <ion-item>
+        <ion-label position="stacked">Categoría</ion-label>
+        <ion-input [(ngModel)]="product.category" placeholder="Categoría"></ion-input>
+      </ion-item>
+      <ion-text color="danger" *ngIf="!product.category">Es necesario agregar categoría</ion-text>
+
+      <ion-item>
+        <ion-label position="stacked">Código del producto</ion-label>
+        <ion-input [(ngModel)]="product.code" placeholder="Código del producto"></ion-input>
+      </ion-item>
+      <ion-text color="danger" *ngIf="!product.code">Es estrictamente necesario agregar el código</ion-text>
+    </ion-card-content>
+  </ion-card>
+  
+  <ion-footer>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-button (click)="save()">Guardar</ion-button>
+        <ion-button color="danger" (click)="cancel()">Cancelar</ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-footer>
+</ion-content>
