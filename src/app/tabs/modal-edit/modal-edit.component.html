@@ -7,7 +7,7 @@
       Editar producto
     </ion-title>
     <ion-buttons slot="end">
-      <ion-button (click)="confirm()" [strong]="true">Editar</ion-button>
+      <ion-button (click)="save()" [strong]="true">Guardar</ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -65,12 +65,4 @@
     </ion-card-content>
   </ion-card>
   
-  <ion-footer>
-    <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-button (click)="save()">Guardar</ion-button>
-        <ion-button color="danger" (click)="cancel()">Cancelar</ion-button>
-      </ion-buttons>
-    </ion-toolbar>
-  </ion-footer>
 </ion-content>
